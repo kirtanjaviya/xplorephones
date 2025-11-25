@@ -298,10 +298,12 @@ const ProductDetail = () => {
                     <MessageSquare className="h-4 w-4 mr-2" />
                     WhatsApp
                   </Button>
-                  <Button variant="outline">
-                    <Phone className="h-4 w-4 mr-2" />
-                    Call Us
-                  </Button>
+                  <a href="tel:+919054489461">
+                    <Button variant="outline" className="w-full">
+                      <Phone className="h-4 w-4 mr-2" />
+                      Call Us
+                    </Button>
+                  </a>
                   <Dialog open={dialogOpen} onOpenChange={setDialogOpen}>
                     <DialogTrigger asChild>
                       <Button variant="outline">

@@ -68,13 +68,13 @@ const Index = () => {
           <Link to="/products" className="block cursor-pointer">
             {/* Mobile Image */}
             <img
-              src="/hero-image-mobile.png"
+              src="/hero-image-mobile.webp"
               alt="Hero Banner"
               className="w-full h-auto object-cover md:hidden hover:opacity-95 transition-opacity"
             />
             {/* Desktop Image */}
             <img
-              src="/hero-image.png"
+              src="/hero-image.webp"
               alt="Hero Banner"
               className="w-full h-auto object-cover hidden md:block hover:opacity-95 transition-opacity"
             />

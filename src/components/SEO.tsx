@@ -14,7 +14,7 @@ const SEO = ({
     title,
     description,
     keywords,
-    image = "/hero-image.png",
+    image = "/hero-image.webp",
     url = "https://xplorephones.com",
     type = "website",
     schema

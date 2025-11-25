@@ -57,19 +57,19 @@ const PhoneCard = ({
           </div>
         </div>
 
-        <div className="flex items-center gap-2 text-xs text-muted-foreground">
+        <div className="flex flex-wrap items-center gap-x-2 gap-y-1 text-xs text-muted-foreground">
           <div className="flex items-center gap-1">
             <HardDrive className="h-3 w-3" />
             <span>{storage}</span>
           </div>
-          <span>•</span>
+          <span className="hidden sm:inline">•</span>
           <div className="flex items-center gap-1">
             <Cpu className="h-3 w-3" />
             <span>{ram}</span>
           </div>
           {batteryHealth && (
             <>
-              <span>•</span>
+              <span className="hidden sm:inline">•</span>
               <div className="flex items-center gap-1">
                 <Battery className="h-3 w-3" />
                 <span>{batteryHealth}%</span>
@@ -81,7 +81,7 @@ const PhoneCard = ({
 
       <CardFooter className="p-3 pt-0">
         <Link to={`/product/${id}`} className="w-full">
-          <Button 
+          <Button
             variant={isSold ? "outline" : "default"}
             className="w-full"
             disabled={isSold}

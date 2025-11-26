@@ -10,7 +10,7 @@ import { Dialog, DialogContent, DialogHeader, DialogTitle, DialogTrigger } from 
 import { Input } from "@/components/ui/input";
 import { Label } from "@/components/ui/label";
 import { Textarea } from "@/components/ui/textarea";
-import { ArrowLeft, Battery, HardDrive, Cpu, Package, Phone, Mail, MessageSquare, Loader2 } from "lucide-react";
+import { ArrowLeft, Battery, HardDrive, Cpu, Package, Phone, Mail, MessageSquare, Loader2, ChevronLeft, ChevronRight, X } from "lucide-react";
 import { useToast } from "@/hooks/use-toast";
 import { z } from "zod";
 
@@ -31,6 +31,7 @@ const ProductDetail = () => {
   const [phone, setPhone] = useState<any>(null);
   const [loading, setLoading] = useState(true);
   const [selectedImage, setSelectedImage] = useState(0);
+  const [showFullImage, setShowFullImage] = useState(false);
   const [dialogOpen, setDialogOpen] = useState(false);
   const [submitting, setSubmitting] = useState(false);
   const { toast } = useToast();
@@ -61,6 +62,16 @@ const ProductDetail = () => {
     } finally {
       setLoading(false);
     }
+  };
+
+  const nextImage = (e?: React.MouseEvent) => {
+    e?.stopPropagation();
+    setSelectedImage((prev) => (prev + 1) % phone.images.length);
+  };
+
+  const prevImage = (e?: React.MouseEvent) => {
+    e?.stopPropagation();
+    setSelectedImage((prev) => (prev - 1 + phone.images.length) % phone.images.length);
   };
 
   // ... handlers ...
@@ -186,12 +197,20 @@ const ProductDetail = () => {
         <div className="grid grid-cols-1 lg:grid-cols-2 gap-8">
           {/* Image Gallery */}
           <div className="space-y-4">
-            <div className="aspect-square bg-muted rounded-lg overflow-hidden">
+            <div
+              className="aspect-square bg-muted rounded-lg overflow-hidden cursor-pointer relative group"
+              onClick={() => setShowFullImage(true)}
+            >
               <img
                 src={phone.images[selectedImage] || "/placeholder.svg"}
                 alt={`${phone.brand} ${phone.model}`}
                 className="w-full h-full object-cover"
               />
+              <div className="absolute inset-0 bg-black/0 group-hover:bg-black/10 transition-colors flex items-center justify-center">
+                <span className="opacity-0 group-hover:opacity-100 bg-black/50 text-white px-3 py-1 rounded-full text-sm transition-opacity">
+                  View Full Screen
+                </span>
+              </div>
             </div>
             {phone.images.length > 1 && (
               <div className="grid grid-cols-4 gap-2">
@@ -208,6 +227,47 @@ const ProductDetail = () => {
               </div>
             )}
           </div>
+
+          {/* Full Screen Image Dialog */}
+          <Dialog open={showFullImage} onOpenChange={setShowFullImage}>
+            <DialogContent className="max-w-[95vw] max-h-[95vh] p-0 border-none bg-black/90">
+              <div className="relative w-full h-full flex items-center justify-center min-h-[50vh] md:min-h-[80vh]">
+                <button
+                  onClick={() => setShowFullImage(false)}
+                  className="absolute top-4 right-4 z-50 p-2 bg-black/50 rounded-full text-white hover:bg-black/70 transition-colors"
+                >
+                  <X className="h-6 w-6" />
+                </button>
+
+                {phone.images.length > 1 && (
+                  <>
+                    <button
+                      onClick={prevImage}
+                      className="absolute left-4 z-50 p-2 bg-black/50 rounded-full text-white hover:bg-black/70 transition-colors"
+                    >
+                      <ChevronLeft className="h-8 w-8" />
+                    </button>
+                    <button
+                      onClick={nextImage}
+                      className="absolute right-4 z-50 p-2 bg-black/50 rounded-full text-white hover:bg-black/70 transition-colors"
+                    >
+                      <ChevronRight className="h-8 w-8" />
+                    </button>
+                  </>
+                )}
+
+                <img
+                  src={phone.images[selectedImage]}
+                  alt={`${phone.brand} ${phone.model}`}
+                  className="max-w-full max-h-[90vh] object-contain"
+                />
+
+                <div className="absolute bottom-4 left-1/2 -translate-x-1/2 bg-black/50 px-4 py-2 rounded-full text-white text-sm">
+                  {selectedImage + 1} / {phone.images.length}
+                </div>
+              </div>
+            </DialogContent>
+          </Dialog>
 
           {/* Details */}
           <div className="space-y-6">

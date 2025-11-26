@@ -39,18 +39,54 @@ const Index = () => {
     }
   };
 
-  const organizationSchema = {
+  const localBusinessSchema = {
     "@context": "https://schema.org",
-    "@type": "Organization",
+    "@type": "MobilePhoneStore",
     "name": "Xplore Phones",
+    "image": "https://efzkhwcpuvkwmiscjbuj.supabase.co/storage/v1/object/public/phone-images/hero-image.webp",
     "url": "https://xplorephone.store",
-    "logo": "https://xplorephone.store/favicon.png",
-    "contactPoint": {
-      "@type": "ContactPoint",
-      "telephone": "+91-9054489461",
-      "contactType": "sales",
-      "areaServed": "Surat"
-    }
+    "telephone": "+919054489461",
+    "priceRange": "₹",
+    "address": {
+      "@type": "PostalAddress",
+      "streetAddress": "Ambika Nagar, Katargam",
+      "addressLocality": "Surat",
+      "postalCode": "395004",
+      "addressRegion": "Gujarat",
+      "addressCountry": "IN"
+    },
+    "geo": {
+      "@type": "GeoCoordinates",
+      "latitude": "21.2319",
+      "longitude": "72.8363"
+    },
+    "openingHoursSpecification": {
+      "@type": "OpeningHoursSpecification",
+      "dayOfWeek": [
+        "Monday",
+        "Tuesday",
+        "Wednesday",
+        "Thursday",
+        "Friday",
+        "Saturday"
+      ],
+      "opens": "10:00",
+      "closes": "20:00"
+    },
+    "sameAs": [
+      "https://xplorephone.store"
+    ]
+  };
+
+  const breadcrumbSchema = {
+    "@context": "https://schema.org",
+    "@type": "BreadcrumbList",
+    "itemListElement": [{
+      "@type": "ListItem",
+      "position": 1,
+      "name": "Home",
+      "item": "https://xplorephone.store"
+    }]
   };
 
   return (
@@ -59,7 +95,7 @@ const Index = () => {
         title="Buy Second Hand Phones in Surat"
         description="Looking for used smartphones in Surat? Xplore Phones offers verified second-hand iPhones, Samsung, and OnePlus devices with transparent pricing. Buy now!"
         keywords="Second hand phones Surat, Used mobile shop Surat, Refurbished iPhone Surat, Old mobile selling shop near me"
-        schema={organizationSchema}
+        schema={[localBusinessSchema, breadcrumbSchema]}
       />
       <Navbar />
 

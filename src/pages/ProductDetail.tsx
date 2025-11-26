@@ -170,8 +170,37 @@ const ProductDetail = () => {
       "priceCurrency": "INR",
       "price": phone.price,
       "itemCondition": "https://schema.org/UsedCondition",
-      "availability": phone.is_sold ? "https://schema.org/OutOfStock" : "https://schema.org/InStock"
+      "availability": phone.is_sold ? "https://schema.org/OutOfStock" : "https://schema.org/InStock",
+      "seller": {
+        "@type": "MobilePhoneStore",
+        "name": "Xplore Phones"
+      }
     }
+  };
+
+  const breadcrumbSchema = {
+    "@context": "https://schema.org",
+    "@type": "BreadcrumbList",
+    "itemListElement": [
+      {
+        "@type": "ListItem",
+        "position": 1,
+        "name": "Home",
+        "item": "https://xplorephone.store"
+      },
+      {
+        "@type": "ListItem",
+        "position": 2,
+        "name": "Products",
+        "item": "https://xplorephone.store/products"
+      },
+      {
+        "@type": "ListItem",
+        "position": 3,
+        "name": `${phone.brand} ${phone.model}`,
+        "item": `https://xplorephone.store/product/${phone.id}`
+      }
+    ]
   };
 
   return (
@@ -182,7 +211,7 @@ const ProductDetail = () => {
         keywords={`Second hand ${phone.model} price Surat, Used ${phone.brand} ${phone.model} Surat, ${phone.brand} second hand mobile`}
         image={phone.images?.[0]}
         url={`/product/${phone.id}`}
-        schema={productSchema}
+        schema={[productSchema, breadcrumbSchema]}
       />
       <Navbar />
 

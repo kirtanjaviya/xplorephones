@@ -3,4 +3,4 @@ Allow: /
 Disallow: /admin
 Disallow: /auth
 
-Sitemap: https://xplorephones.com/sitemap.xml
+Sitemap: https://xplorephone.store/sitemap.xml

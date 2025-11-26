@@ -1,4 +1,5 @@
 import { Link } from "react-router-dom";
+import { Helmet } from "react-helmet-async";
 import { Button } from "@/components/ui/button";
 import { Card, CardContent } from "@/components/ui/card";
 import Navbar from "@/components/Navbar";
@@ -42,8 +43,8 @@ const Index = () => {
     "@context": "https://schema.org",
     "@type": "Organization",
     "name": "Xplore Phones",
-    "url": "https://xplorephones.com",
-    "logo": "https://xplorephones.com/favicon.png",
+    "url": "https://xplorephone.store",
+    "logo": "https://xplorephone.store/favicon.png",
     "contactPoint": {
       "@type": "ContactPoint",
       "telephone": "+91-9054489461",
@@ -63,21 +64,35 @@ const Index = () => {
       <Navbar />
 
       <main className="flex-1">
+        <Helmet>
+          <link
+            rel="preload"
+            as="image"
+            href="https://efzkhwcpuvkwmiscjbuj.supabase.co/storage/v1/object/public/phone-images/hero-image-mobile.webp"
+            media="(max-width: 768px)"
+          />
+          <link
+            rel="preload"
+            as="image"
+            href="https://efzkhwcpuvkwmiscjbuj.supabase.co/storage/v1/object/public/phone-images/hero-image.webp"
+            media="(min-width: 769px)"
+          />
+        </Helmet>
         {/* Hero Section */}
         <section className="relative w-full">
           <Link to="/products" className="block cursor-pointer">
-            {/* Mobile Image */}
-            <img
-              src="/hero-image-mobile.webp"
-              alt="Hero Banner"
-              className="w-full h-auto object-cover md:hidden hover:opacity-95 transition-opacity"
-            />
-            {/* Desktop Image */}
-            <img
-              src="/hero-image.webp"
-              alt="Hero Banner"
-              className="w-full h-auto object-cover hidden md:block hover:opacity-95 transition-opacity"
-            />
+            <picture>
+              <source
+                media="(max-width: 768px)"
+                srcSet="https://efzkhwcpuvkwmiscjbuj.supabase.co/storage/v1/object/public/phone-images/hero-image-mobile.webp"
+              />
+              <img
+                src="https://efzkhwcpuvkwmiscjbuj.supabase.co/storage/v1/object/public/phone-images/hero-image.webp"
+                alt="Hero Banner"
+                className="w-full h-auto object-cover hover:opacity-95 transition-opacity"
+                fetchPriority="high"
+              />
+            </picture>
           </Link>
         </section>
 

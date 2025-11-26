@@ -155,7 +155,7 @@ const ProductDetail = () => {
     },
     "offers": {
       "@type": "Offer",
-      "url": `https://xplorephones.com/product/${phone.id}`,
+      "url": `https://xplorephone.store/product/${phone.id}`,
       "priceCurrency": "INR",
       "price": phone.price,
       "itemCondition": "https://schema.org/UsedCondition",

@@ -14,15 +14,15 @@ const SEO = ({
     title,
     description,
     keywords,
-    image = "/hero-image.webp",
-    url = "https://xplorephones.com",
+    image = "https://efzkhwcpuvkwmiscjbuj.supabase.co/storage/v1/object/public/phone-images/hero-image.webp",
+    url = "https://xplorephone.store",
     type = "website",
     schema
 }: SEOProps) => {
     const siteTitle = "Xplore Phones";
     const fullTitle = title === siteTitle ? title : `${title} | ${siteTitle}`;
-    const fullUrl = url.startsWith("http") ? url : `https://xplorephones.com${url}`;
-    const fullImage = image.startsWith("http") ? image : `https://xplorephones.com${image}`;
+    const fullUrl = url.startsWith("http") ? url : `https://xplorephone.store${url}`;
+    const fullImage = image.startsWith("http") ? image : `https://xplorephone.store${image}`;
 
     return (
         <Helmet>

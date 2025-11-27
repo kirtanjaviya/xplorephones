@@ -92,9 +92,9 @@ const Index = () => {
   return (
     <div className="min-h-screen flex flex-col">
       <SEO
-        title="Buy Second Hand Phones in Surat"
-        description="Looking for used smartphones in Surat? Xplore Phones offers verified second-hand iPhones, Samsung, and OnePlus devices with transparent pricing. Buy now!"
-        keywords="Second hand phones Surat, Used mobile shop Surat, Refurbished iPhone Surat, Old mobile selling shop near me"
+        title="Xplore Phones - Second Hand Mobile Selling Website in Surat"
+        description="Best second hand mobile selling website in Surat. Buy used phones under 10k, 15k, 20k. Verified iPhone, Samsung, OnePlus available."
+        keywords="xplore phones, second hand mobile selling website, phones under 10k, used iphone surat, second hand mobile under 10000"
         schema={[localBusinessSchema, breadcrumbSchema]}
       />
       <Navbar />
@@ -136,9 +136,9 @@ const Index = () => {
         <section className="py-16 bg-background">
           <div className="container mx-auto px-4">
             <div className="text-center mb-12">
-              <h2 className="text-3xl md:text-4xl font-bold mb-4">Why Choose Xplore Phones?</h2>
+              <h1 className="text-3xl md:text-4xl font-bold mb-4">Best Second Hand Mobile Selling Website in Surat</h1>
               <p className="text-muted-foreground text-lg max-w-2xl mx-auto">
-                We prioritize transparency and quality in every device we offer.
+                We prioritize transparency and quality in every device we offer. Find the best phones under 10k, 15k, and 20k.
               </p>
             </div>
 

@@ -206,9 +206,9 @@ const ProductDetail = () => {
   return (
     <div className="min-h-screen flex flex-col">
       <SEO
-        title={`Buy Used ${phone.brand} ${phone.model} in Surat - ${phone.condition}`}
-        description={`Buy second-hand ${phone.brand} ${phone.model} (${phone.storage}) in Surat. ${phone.condition} condition, ${phone.battery_health}% battery health. Verified device at ₹${phone.price}.`}
-        keywords={`Second hand ${phone.model} price Surat, Used ${phone.brand} ${phone.model} Surat, ${phone.brand} second hand mobile`}
+        title={`${phone.brand} ${phone.model} Second Hand Price in Surat | Buy Used Mobile`}
+        description={`Get ${phone.brand} ${phone.model} second hand at best price in Surat. Verified condition. Buy used ${phone.model} under ${phone.price}.`}
+        keywords={`Second hand ${phone.model} price Surat, Used ${phone.brand} ${phone.model} Surat, ${phone.brand} second hand mobile, ${phone.model} second hand price`}
         image={phone.images?.[0]}
         url={`/product/${phone.id}`}
         schema={[productSchema, breadcrumbSchema]}
@@ -232,7 +232,7 @@ const ProductDetail = () => {
             >
               <img
                 src={phone.images[selectedImage] || "/placeholder.svg"}
-                alt={`${phone.brand} ${phone.model}`}
+                alt={`${phone.brand} ${phone.model} second hand mobile in Surat`}
                 className="w-full h-full object-cover"
               />
               <div className="absolute inset-0 bg-black/0 group-hover:bg-black/10 transition-colors flex items-center justify-center">

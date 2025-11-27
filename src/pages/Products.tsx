@@ -80,18 +80,18 @@ const Products = () => {
   return (
     <div className="min-h-screen flex flex-col">
       <SEO
-        title="Buy Used Smartphones in Surat | iPhone, Samsung, OnePlus"
-        description="Browse our collection of verified second-hand mobile phones in Surat. Best prices for used iPhone 13, 14, Samsung S23, and more. Condition checked."
-        keywords="Used mobile price list Surat, Second hand mobile market Surat, Buy old phones Surat"
+        title="Buy Second Hand Phones Under 10k, 15k, 20k in Surat | Xplore Phones"
+        description="Looking for second hand phones under 10000? Browse our collection of verified used mobiles. iPhone, Samsung, OnePlus available."
+        keywords="Used mobile price list Surat, Second hand mobile market Surat, Buy old phones Surat, phones under 10000, phones under 15000"
         url="/products"
       />
       <Navbar />
 
       <main className="flex-1 container mx-auto px-4 py-8">
         <div className="mb-8">
-          <h1 className="text-4xl font-bold mb-2">Available Products</h1>
+          <h1 className="text-4xl font-bold mb-2">Second Hand Phones for Sale</h1>
           <p className="text-muted-foreground text-lg">
-            Browse our collection of quality second-hand smartphones
+            Browse our collection of quality second-hand smartphones under 10k, 15k, and 20k.
           </p>
         </div>
 

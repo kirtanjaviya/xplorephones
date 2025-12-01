@@ -1,4 +1,5 @@
 import { useState, useEffect } from "react";
+import { useParams } from "react-router-dom";
 import { supabase } from "@/integrations/supabase/client";
 import Navbar from "@/components/Navbar";
 import Footer from "@/components/Footer";
@@ -9,6 +10,7 @@ import { Loader2 } from "lucide-react";
 import SEO from "@/components/SEO";
 
 const Products = () => {
+  const { brand, range, feature } = useParams();
   const [phones, setPhones] = useState<any[]>([]);
   const [filteredPhones, setFilteredPhones] = useState<any[]>([]);
   const [loading, setLoading] = useState(true);
@@ -22,6 +24,19 @@ const Products = () => {
   useEffect(() => {
     fetchPhones();
   }, []);
+
+  useEffect(() => {
+    if (brand) {
+      setBrandFilter(brand);
+    }
+    if (range) {
+      if (range === "under-10000") setPriceFilter("0-10000");
+      else if (range === "under-15000") setPriceFilter("0-15000");
+      else if (range === "under-20000") setPriceFilter("0-20000");
+      else if (range === "premium") setPriceFilter("20000-100000");
+    }
+    // Feature logic can be added here if needed
+  }, [brand, range, feature]);
 
   useEffect(() => {
     applyFilters();
@@ -58,7 +73,7 @@ const Products = () => {
 
     // Brand filter
     if (brandFilter !== "all") {
-      result = result.filter((phone) => phone.brand === brandFilter);
+      result = result.filter((phone) => phone.brand.toLowerCase() === brandFilter.toLowerCase());
     }
 
     // Condition filter
@@ -77,21 +92,35 @@ const Products = () => {
     setFilteredPhones(result);
   };
 
+  const getPageTitle = () => {
+    if (brand) return `Buy Used ${brand} Phones in Surat | Xplore Phones`;
+    if (range) return `Second Hand Phones ${range.replace("-", " ")} in Surat`;
+    return "Buy Second Hand Phones Under 10k, 15k, 20k in Surat | Xplore Phones";
+  };
+
+  const getPageDescription = () => {
+    if (brand) return `Shop verified second-hand ${brand} smartphones in Surat. Best prices for used ${brand} mobiles.`;
+    if (range) return `Find the best second-hand phones ${range.replace("-", " ")}. Quality checked and verified devices.`;
+    return "Looking for second hand phones under 10000? Browse our collection of verified used mobiles. iPhone, Samsung, OnePlus available.";
+  };
+
   return (
     <div className="min-h-screen flex flex-col">
       <SEO
-        title="Buy Second Hand Phones Under 10k, 15k, 20k in Surat | Xplore Phones"
-        description="Looking for second hand phones under 10000? Browse our collection of verified used mobiles. iPhone, Samsung, OnePlus available."
+        title={getPageTitle()}
+        description={getPageDescription()}
         keywords="Used mobile price list Surat, Second hand mobile market Surat, Buy old phones Surat, phones under 10000, phones under 15000"
-        url="/products"
+        url={window.location.pathname}
       />
       <Navbar />
 
       <main className="flex-1 container mx-auto px-4 py-8">
         <div className="mb-8">
-          <h1 className="text-4xl font-bold mb-2">Second Hand Phones for Sale</h1>
+          <h1 className="text-4xl font-bold mb-2">
+            {brand ? `${brand} Mobiles` : range ? `Phones ${range.replace("-", " ")}` : "Second Hand Phones for Sale"}
+          </h1>
           <p className="text-muted-foreground text-lg">
-            Browse our collection of quality second-hand smartphones under 10k, 15k, and 20k.
+            Browse our collection of quality second-hand smartphones.
           </p>
         </div>
 
